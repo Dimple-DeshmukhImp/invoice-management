@@ -2,7 +2,10 @@ package com.qispine.invoice_management.Entities;
 
 import java.math.BigDecimal;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -30,7 +33,8 @@ public class InvoiceDetails {
 	private BigDecimal totalPrice;
 	
 	@ManyToOne
-	@JoinColumn(name="invoiceId")
+	@JoinColumn(name="invoic_id", nullable = false)
+	@JsonIgnore
 	private Invoice invoice;
 	
 	
@@ -44,6 +48,17 @@ public class InvoiceDetails {
 			@NotNull Integer qty, @NotNull BigDecimal totalPrice, Invoice invoice) {
 		super();
 		this.invoiceDetailsId = invoiceDetailsId;
+		this.productName = productName;
+		this.price = price;
+		this.qty = qty;
+		this.totalPrice = totalPrice;
+		this.invoice = invoice;
+	}
+
+	
+	public InvoiceDetails(@NotNull String productName, @NotNull BigDecimal price, @NotNull Integer qty,
+			@NotNull BigDecimal totalPrice, Invoice invoice) {
+		super();
 		this.productName = productName;
 		this.price = price;
 		this.qty = qty;

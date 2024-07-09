@@ -20,8 +20,8 @@ public class Invoice {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long invoiceid;
 	
-	@NotNull
-	private String invoiceNumber;
+//	@NotNull
+//	private String invoiceNumber;
 	
 	@NotNull
 	private LocalDate date;
@@ -48,14 +48,28 @@ public class Invoice {
 		// TODO Auto-generated constructor stub
 	}
 
+	
+
+	public Invoice(Long invoiceid, @NotNull LocalDate date, @NotNull String customerName, @NotNull String contact,
+			@NotNull BigDecimal total, @NotNull String paymentMethod, List<InvoiceDetails> invoiceDetails) {
+		super();
+		this.invoiceid = invoiceid;
+		this.date = date;
+		this.customerName = customerName;
+		this.contact = contact;
+		this.total = total;
+		this.paymentMethod = paymentMethod;
+		this.invoiceDetails = invoiceDetails;
+	}
 
 
-	public Invoice(Long invoiceid, @NotNull String invoiceNumber, @NotNull LocalDate date, @NotNull String customerName,
+
+	public Invoice(@NotNull LocalDate date, @NotNull String customerName,
 			@NotNull String contact, @NotNull BigDecimal total, @NotNull String paymentMethod,
 			List<InvoiceDetails> invoiceDetails) {
 		super();
 		this.invoiceid = invoiceid;
-		this.invoiceNumber = invoiceNumber;
+	
 		this.date = date;
 		this.customerName = customerName;
 		this.contact = contact;
@@ -78,15 +92,15 @@ public class Invoice {
 
 
 
-	public String getInvoiceNumber() {
-		return invoiceNumber;
-	}
-
-
-
-	public void setInvoiceNumber(String invoiceNumber) {
-		this.invoiceNumber = invoiceNumber;
-	}
+//	public String getInvoiceNumber() {
+//		return invoiceNumber;
+//	}
+//
+//
+//
+//	public void setInvoiceNumber(String invoiceNumber) {
+//		this.invoiceNumber = invoiceNumber;
+//	}
 
 
 
